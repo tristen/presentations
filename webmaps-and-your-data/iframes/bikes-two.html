@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset='utf-8'>
+  <title></title>
+  <script src='https://api.tiles.mapbox.com/mapbox.js/v2.0.1/mapbox.js'></script>
+  <link href='https://api.tiles.mapbox.com/mapbox.js/v2.0.1/mapbox.css' rel='stylesheet' />
+  <style>
+    body { margin:0; padding:0; }
+    #map { position:absolute; top:0; bottom:0; width:100%; }
+  </style>
+</head>
+<body>
+<div id='map'></div>
+<script>
+  L.mapbox.accessToken = 'pk.eyJ1IjoidHJpc3RlbiIsImEiOiJiUzBYOEJzIn0.VyXs9qNWgTfABLzSI3YcrQ';
+  var map = L.mapbox.map('map', 'tristen.map-4s93c8qx', {
+    zoomControl: false    
+  }).setView([43.6659, -79.4390], 13);
+
+  // Use the loadURL feature to request the .geojson file
+  // inititally.
+  var shops = L.mapbox.featureLayer().loadURL('../data/bikes.geojson');
+  var geojson = [];
+
+  // Wait for mapbox.js to finish the 
+  // request for the markers so we can build 
+  // them up the way we want to.
+  shops.on('ready', function(l) {
+    shops.eachLayer(function(l) {
+        var props = l.feature.properties;
+        props['marker-symbol'] = 'bicycle';
+        props['marker-color'] = '#f86767';
+        props['title'] = props['NAME'];
+        props['description'] = props['ADDRESS'];
+        geojson.push(l.feature);
+    });
+
+  shops.setGeoJSON(geojson).addTo(map);
+});
+</script>
+</body>
+</html>
