@@ -31,6 +31,17 @@
     .overlay {
       text-shadow:0 5px 0 rgba(0,0,0,0.20);
       }
+    .dazzel {
+      -webkit-animation: rainbow 2s steps(36) infinite;
+      }
+    @-webkit-keyframes rainbow {
+      from { -webkit-filter:hue-rotate(5deg); }
+      to { -webkit-filter:hue-rotate(360deg); }
+    }
+    @keyframes rainbow {
+      from { filter:hue-rotate(5deg); }
+      to { filter:hue-rotate(360deg); }
+      }
       iframe {
         background:#fff;
         position:fixed;
@@ -72,16 +83,16 @@
 </div>
 
 <!--
-  Shapefiles: a format proposed to be open but required close sourced 
+  Shapefiles: a format proposed to be open but required close sourced
   programs to run it. Also, reading the data source is undecipherable.
 
-  KML on the otherhand is a step in the right direction like many 
+  KML on the otherhand is a step in the right direction like many
   web technologies but designed around XML.
 
   GeoJSON is an easily decierable key value format. It's designed to be
   read easily and parsable by machines.
 
-  Like most specs on the web they aren't perfect but as a format it's 
+  Like most specs on the web they aren't perfect but as a format it's
   dumb and works everywhere on the web. The internet prefers open formats.
 -->
 <div>
@@ -133,7 +144,7 @@ Point
 </div>
 
 <!--
-  With each of these examples mention how the coordinates 
+  With each of these examples mention how the coordinates
   are structured. How the type key changes.
   Also, point out the addition of the properties object.
 -->
@@ -271,12 +282,12 @@ All together
 </div>
 
 <div>
-  BTW: How was that map rendered?
+  BTW: How were those maps rendered?
 </div>
 
 <!--
   - This is an HTML document ubiquitous on the web
-  - Point out the line that connects the GeoJSON file to it. 
+  - Point out the line that connects the GeoJSON file to it.
   - I'm using mapbox.js here to render the map.
   - All you need is a internet connection and a text editor.
 -->
@@ -315,8 +326,8 @@ All together
   <a href='http://toronto.ca/open'>toronto.ca/open</a>
 </div>
 
-<!-- 
-  First thing I'm going to do is download this and open the 
+<!--
+  First thing I'm going to do is download this and open the
   file into a program called QGIS.
 -->
 <div class='center'>
@@ -351,7 +362,7 @@ markers.addTo(map);
 </div>
 
 <div>
-Tooltips? Color?
+  Tooltips? <strong class='dazzel'>Color</strong>?
 </div>
 
 <div>
@@ -359,7 +370,7 @@ Afterall, there's other data in this file
 </div>
 
 <!--
-  Afterall, the data exported has pertinent 
+  Afterall, the data exported has pertinent
   property data accompanied with it.
   A single marker looks like this in our file.
 -->
@@ -377,7 +388,7 @@ Afterall, there's other data in this file
     "PHONE": "416-546-2200",
     "EMAIL": "charlies@thebikejoint.com",
     "RENTAL": "NO"
-  } 
+  }
 },
 </code></pre>
 </div>
@@ -397,7 +408,7 @@ Afterall, there's other data in this file
     I recommend watching it.
 -->
 <div>
-  Technology is helping us democratize stuff 
+  Technology is helping us democratize stuff
   <a href='https://www.mapbox.com/blog/geodc-github/'>@benbalter</a>
 </div>
 
@@ -471,7 +482,7 @@ Address,Address Info,City,Province,Title,Category,Phone Number
 &lt;script&gt;
   L.mapbox.accessToken = 'TOKEN';
   L.mapbox.map('map', 'USERNAME.MAPID', {
-    zoomControl: false    
+    zoomControl: false
   });
 
   omnivore.csv('../data/attractions.csv').addTo(map);
