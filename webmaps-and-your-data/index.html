@@ -20,10 +20,10 @@
       color:#f86767;
       text-shadow:20px 20px 0 #fff;
       }
-    .slide-22 {
+    .slide-23 {
       background-image:url(images/open-toronto.png);
       }
-    .slide-39 {
+    .slide-40 {
       background-image:url(images/two-birds.png);
       color:#000;
       text-shadow:20px 20px 0 rgba(255,255,255,0.75);
@@ -100,6 +100,14 @@
   JSON resembles JavaScript making it a perfect candidate for
   clientside rendering of data onto web maps.
 -->
+<div>
+<pre><code data-language='javascript'>
+{
+  "type": "FeatureCollection",
+  "features": []
+}
+</code></pre>
+</div>
 <div>
 <pre><code data-language='javascript'>
 {
@@ -287,13 +295,12 @@ All together
   &lt;script&gt;
     L.mapbox.accessToken = 'TOKEN';
 
-    var map = L.mapbox.map('map', 'USERNAME.MAPID', {
-      zoomControl: false
-    }).setView([43.6659, -79.4390], 13);
+    var map = L.mapbox.map('map', 'USERNAME.MAPID');
+        map.setView([43.6659, -79.4390], 13);
 
     var features = L.mapbox.featureLayer()
-    features.loadURL('FILENAME.geojson')
-    features.addTo(map);
+        features.loadURL('FILENAME.geojson')
+        features.addTo(map);
   &lt;/script&gt;
 &lt;/body&gt;
 &lt;/html&gt;
@@ -318,7 +325,7 @@ All together
 </div>
 
 <div>
-  Convert the ESRI Shapefile into GeoJSON using <a href='http://www.qgis.org/en/site/forusers/download.html'>QGIS</a>.
+  Convert the ESRI <strong>Shapefile to GeoJSON</strong> using <a href='http://www.qgis.org/en/site/forusers/download.html'>QGIS</a>.
 </div>
 
 <div>
@@ -348,7 +355,7 @@ Tooltips? Color?
 </div>
 
 <div>
-Afterall there's data in this file
+Afterall, there's other data in this file
 </div>
 
 <!--
@@ -366,16 +373,10 @@ Afterall there's data in this file
   "properties": {
     "ADDRESS": "242 Queen St E",
     "POSTAL_CD": "M5A 1S3",
-    "X": 315383.797,
-    "Y": 4834790.933,
-    "LONGITUDE": -79.368594933500006,
-    "LATITUDE": 43.654993887800003,
     "NAME": "Charlie's Bike Joint",
-    "UNIT": null,
     "PHONE": "416-546-2200",
     "EMAIL": "charlies@thebikejoint.com",
-    "RENTAL": "NO",
-    "OBJECTID": 24
+    "RENTAL": "NO"
   } 
 },
 </code></pre>
@@ -478,10 +479,6 @@ Address,Address Info,City,Province,Title,Category,Phone Number
 &lt;/body&gt;
 &lt;/html&gt;
 </code></pre>
-</div>
-
-<div class='center'>
-  Questions?
 </div>
 
 <div class='center'>
