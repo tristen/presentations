@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset='utf-8'>
+  <title>Some history and data scenarios for web maps</title>
+  <script src='big.js'></script>
+  <script src='js/rainbow.min.js'></script>
+  <script src='js/generic.js'></script>
+  <script src='js/javascript.js'></script>
+  <script src='js/html.js'></script>
+  <link rel='stylesheet' href='site.css' />
+</head>
+<body>
+
+<div>
+  Some history and data scenarios for web maps
+  <br />
+  <a href='https://github.com/tristen/' target='_blank'>github.com/tristen</a>
+  <a href='https://twitter.com/fallsemo/' target='_blank'>twitter.com/fallsemo</a>
+
+  <aside>
+    Introductions / thanks for having me
+    Micheal has given me an hour to speak so we'll see how far i get
+  </aside>
+</div>
+
+<div>
+  <small>
+    Slides: <a href='http://j.mp/UofT-GIS'>j.mp/UofT-GIS</a>
+  </small>
+  <aside>
+    If you want to follow along (it makes it easier to click on links) the
+    slides are online here.
+  </aside>
+</div>
+
+<div>
+  Hi
+  <aside>
+    What I do at Mapbox
+    Decorate/push pixels and largely work on Frontend code.
+  </aside>
+</div>
+
+<div>
+  Outline:
+  <ol>
+    <li>Rendering maps at Mapbox</li>
+    <li>Data scenarios</li>
+    <li>Demos!</li>
+  </ol>
+  <aside>
+    - I have an outline of things I want to talk which I think eventually ends up relating to GIS.
+    - I also have no idea how long this will take
+    - I want to talk about the various data improvements we made to serve 
+    big data.
+    - It segways into how we're thinking about solving big data problems. A problem you might
+    already be familiar with data processing and analyizing data on a map.
+  </aside>
+</div>
+
+<div>
+  1.&nbsp;Rendering maps at Mapbox
+</div>
+
+<div>
+  Mapbox
+  <br />
+  2010&nbsp;&#9758;&nbsp;present
+  <aside>
+    - Just focusing on the history of web maps where Mapbox begins
+    - Before Mapbox branched off of Devseed, talk about building maps for
+      -- World Bank
+      -- NPR
+      -- Energy.gov
+    - Using the work of a small number of open source contributors in the space
+      -- OpenLayers
+  </aside>
+</div>
+
+<div>
+  Map rendering has been down a long beaten path
+  <aside>
+    - You work a large amount of data from various sources and formats
+    - Compile it all together and serve it to a client
+    - As an example, the OSM dataset is ~30gigs and you typically see ~0.00172%; 
+    - The biggest improvement in data performance is what you choose not to draw
+    - At this stage Google solved slippy maps with z/x/y tiled images
+      - I should note that this was a very important decision and informs
+      even the fast webgl maps we have today. A coordinate system for tiles 
+      was huge.
+  </aside>
+</div>
+
+<div>
+  <br />
+  TileMill &#9758; 
+  <br />
+  Mapbox&nbsp;Studio&nbsp;Classic&nbsp;&#9758;
+  <br />
+  Mapbox Studio 
+  <aside>
+    - Our tools for map design have followed along its path for awhile.
+  </aside>
+</div>
+
+<div>
+  <span class='overlay'></span>
+  2011
+  <br />
+  TileMill
+  <aside>
+    - Familiar with TileMill? It was our first released design studio for creating maps
+    - Supported connecting to custom databases for map data
+  </aside>
+</div>
+
+<div>
+  <ul>
+    <li>
+      Data &#9758; styled raster maps
+    </li>
+    <li>
+      CartoCSS
+    </li>
+  </ul>
+
+  <aside>
+    - CartoCSS is the styling language inspired by CSS. It's an abstraction for 
+    writing style attributes in Mapnik
+    - Feels slow today but it was an improvement as it reused and cached tiles.
+    - Optimization came from using .mbtiles. 
+    - Talk about .mbtiles quick (small take with you sqlite db)
+    - A blue square means it's blue all the way down
+  </aside>
+</div>
+
+<div>
+  <span class='overlay'></span>
+  2014
+  <br />
+  Mapbox Studio Classic
+  <aside>
+    Mapbox Studio Classic was a short-lived project. In many ways it was a hold
+    out until we built Web GL rendering for vector tiles.
+  </aside>
+</div>
+
+<div>
+  <ul>
+    <li>
+      Data &#9758; vector tiles &#9758; styled raster maps
+    </li>
+    <li>
+      CartoCSS
+    </li>
+  </ul>
+  <aside>
+    - This is where we experiment with Vector Tiles
+    - Data is cached and vector tiles are stored as protocal buffer's
+    - That's like a .pbf file you may have seen (More props to Google)
+    - Small compact binary encoding that can be decoded quickly.
+    - Ridiculously faster than request images.
+    - And becuase of this we can now serve the world out of a box
+  </aside>
+</div>
+
+<div>
+  <span class='overlay'></span>
+  2015
+  <br />
+  Mapbox Studio
+  <aside>
+    This is our latest design tool. Online and fast. 
+  </aside>
+</div>
+
+<div>
+  <ul>
+    <li>
+      Data &#9758; vector tiles &#9758; clientside styling &amp; rendered maps
+    </li>
+    <li>
+      <strike>CartoCSS</strike> JSON
+    </li>
+  </ul>
+  <aside>
+    - Thanks to vector tiles this changes everything and we can use Web GL for rendering
+    - No more CartoCSS. JSON is a readable format and crosses into the realm
+      of both online interactions (JSON is JavaScript) and for manual adjustments
+      (see demos)
+  </aside>
+</div>
+
+<div>
+  <span class='overlay'></span>
+  Floating point zooms
+  <aside>
+    - Vector tiles can be looslessly transformed.
+  </aside>
+</div>
+
+<div>
+  <span class='overlay'></span>
+  Analyze the data
+  <aside>
+    - Full data introspection
+  </aside>
+</div>
+
+<div>
+  <span class='overlay'></span>
+  Perspective &amp; smooth animations
+</div>
+
+<div>
+  2.&nbsp;Data scenarios
+  <aside>
+    - I mention everything in step one to really shorten the role of this 
+    section.
+  </aside>
+</div>
+
+<div>
+  Q: Big Data?
+  <br />
+  A: Vector Tiles
+  <br />
+  <br />
+  Q: Just enough data?
+  <br />
+  A: GeoJSON
+  <aside>
+    - Data processing is another story but for actual production 
+    (I'm bias here) there's two options: GeoJSON and Vector tiles
+  </aside>
+</div>
+
+<div>
+  3.&nbsp;Demos!
+</div>
+
+<div>
+  Conclusion
+  <aside>
+    - Learn JavaScript
+    - Because of it's lively community and ubiquity thanks to browsers it's worth 
+    gleaning its tools out there for your own needs
+    - Not to mention hardware is being accelerated for it. Clientside rendering
+    has never had it so easy.
+  </aside>
+</div>
+
+<div>
+  Tools to check out:
+  <ul>
+    <li><a target='_blank' href='http://turfjs.org/'>Turf</a> &ndash; Utilities for spatial analysis</li>
+    <li><a target='_blank' href='https://github.com/mapbox/tippecanoe'>Tippercanoe</a> &ndash; Build vector tilesets from large collections of GeoJSON features</li>
+  </ul>
+
+  <aside>
+    - npm.org a great place to go. This is a package manager useful for sharing code.
+  </aside>
+</div>
+<div>
+Thanks!
+</div>
+
+<div>
+  Find me
+  <br />
+  <a href='https://github.com/tristen/' target='_blank'>github.com/tristen</a>
+  <a href='https://twitter.com/fallsemo/' target='_blank'>twitter.com/fallsemo</a>
+</div>
+
+</html>

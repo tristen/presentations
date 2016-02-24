@@ -1,0 +1,136 @@
+/* Default big.css styling */
+body {
+  font-family:'Helvetica Neue';
+  background:#1968c0; /* blue */
+  color:#fff;
+  margin:0;
+  padding:0;
+  font-weight:bold;
+  }
+body * {
+  -webkit-touch-callout:none;
+  -webkit-user-select:none;
+   -khtml-user-select:none;
+     -moz-user-select:none;
+      -ms-user-select:none;
+          user-select:none;
+  }
+h1, h2, h3, p { margin:0; }
+em, a { font-style:normal; }
+img { width:100%; }
+div { cursor:pointer; cursor:hand; position:absolute; top:0; left:0; padding:75px; line-height:97%; }
+.center { text-align:center; }
+aside { display:none; }
+:focus { outline: 0; }
+a {
+  color:#48c3fb;
+  text-decoration:none;
+  border-bottom:1px solid currentColor;
+  }
+a:hover {
+  color:#fff;
+  border-color:#fff;
+  }
+
+/* Red */
+.slide-22,
+.slide-2 {
+  background-color:#fd6b50;
+  }
+  .slide-22 a,
+  .slide-2 a {
+    color:#fee68b;
+    }
+
+/* Green */
+.slide-19 {
+  background-color:#5fa85e;
+  }
+
+/* Dark Blue */
+.slide-21,
+.slide-20,
+.slide-18,
+.slide-5,
+.slide-4 {
+  background-color:#033045;
+  }
+label {
+  color:#033045;
+  }
+
+/* Blue */
+.slide-1 {
+  background-color:#48c3fb;
+  }
+  .slide-1 a {
+    color:#1968c0;
+    }
+
+/* Custom */
+.slide-23,
+.slide-3 {
+  background:#fdc085;
+  color:#fd6b50;
+  text-shadow:20px 20px 0 #fff;
+  }
+
+/* Background images */
+.slide-9 {
+  background-image:url(img/tilemill.png);
+  background-size:cover;
+  }
+.slide-11 {
+  background-image:url(img/mapbox-studio-classic.png);
+  background-size:cover;
+  }
+.slide-13 {
+  background-image:url(img/mapbox-studio.png);
+  background-size:cover;
+  }
+.slide-15 {
+  background-image:url(img/studio-zooming.gif);
+  background-size:cover;
+  }
+.slide-16 {
+  background-image:url(img/studio-data.gif);
+  background-size:cover;
+  }
+.slide-17 {
+  background-image:url(img/studio-perspective.gif);
+  background-size:cover;
+  }
+
+/* Utils */
+.img-overlay {
+  margin:0 auto;
+  display:block;
+  max-width:100%;
+  }
+.overlay {
+  background-color:rgba(0,0,0,0.25);
+  position:fixed;
+  top:0;left:0;
+  display:block;
+  width:100%;
+  height:100%;
+  z-index:-1;
+  }
+
+/* Code highlighting */
+pre .comment  { color: #586e75; }
+pre .constant { color: #63b6e5;  /* blue */ }
+pre .constant.language  { color: #268bd2; /* blue */ }
+pre .constant.regexp    { color: #2aa198; /* cyan */ }
+pre .storage            { color: #268bd2; /* blue */ }
+pre .string, pre .comment.docstring { color: #f1f075; /* yellow */ }
+pre .support.tag.script, pre .support.tag.style { color: #2aa198; /* cyan */ }
+pre .string.regexp { color: #2aa198; /* cyan */ }
+pre .string.regexp.open, pre .string.regexp.close { color: #2aa198; /* cyan */ }
+pre .keyword, pre .selector { color: #94a73b; /* yellow */ }
+pre .inherited-class { font-style: italic; }
+pre .entity { color: #f86767; /* red */ }
+pre .support, *[data-language="c"] .function.call { color: #f86767; /* red */ }
+pre .support.method { color: #839496; /* base0 */ }
+pre .support.property { color: #839496; /* base0 */ }
+pre .variable.global, pre .variable.class, pre .variable.instance { color: #839496; /* base0 */ }
